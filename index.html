@@ -1,0 +1,444 @@
+```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Flores Vip - Servicio 24/7 en Piura</title>
+    <meta name="description" content="Servicio de taxi premium en Piura. Rápido, seguro y confiable las 24 horas. Pide tu taxi por WhatsApp.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#16a34a', // Matches logo
+                            dark: '#0f172a',
+                            light: '#f8fafc'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slight': 'bounce-slight 2s infinite',
+                    },
+                    keyframes: {
+                        'bounce-slight': {
+                            '0%, 100%': { transform: 'translateY(-5%)' },
+                            '50%': { transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.95));
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #16a34a; 
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-white antialiased font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="https://image.qwenlm.ai/public_source/8774006c-f779-49e1-a959-f70dbf2b08ff/135514433-4e1b-4da9-9948-4b318c4e7271.png" alt="Taxi Flores Vip Logo" class="h-12 w-auto object-contain">
+                    <span class="font-bold text-xl tracking-tight hidden sm:block">FLORES<span class="text-brand-green">VIP</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beneficios" class="text-gray-300 hover:text-brand-green transition-colors text-sm font-medium">Beneficios</a>
+                    <a href="#como-funciona" class="text-gray-300 hover:text-brand-green transition-colors text-sm font-medium">Cómo Funciona</a>
+                    <a href="#servicios" class="text-gray-300 hover:text-brand-green transition-colors text-sm font-medium">Servicios</a>
+                    <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" target="_blank" class="bg-brand-green hover:bg-green-600 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-all transform hover:scale-105 shadow-lg shadow-green-900/50 flex items-center gap-2">
+                        <i class="fab fa-whatsapp"></i> Pedir Taxi
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-gray-800">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#beneficios" class="block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-green hover:bg-gray-800 rounded-md">Beneficios</a>
+                <a href="#como-funciona" class="block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-green hover:bg-gray-800 rounded-md">Cómo Funciona</a>
+                <a href="#servicios" class="block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-green hover:bg-gray-800 rounded-md">Servicios</a>
+                <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" class="block w-full text-center mt-4 bg-brand-green text-white px-4 py-3 rounded-lg font-bold">
+                    Pedir Taxi Ahora
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://image.qwenlm.ai/public_source/8774006c-f779-49e1-a959-f70dbf2b08ff/1ecb6e34e-8113-4629-b919-c8cf60fdb681.png" alt="Equipo Taxi Flores Vip" class="w-full h-full object-cover object-center">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-brand-green/20 border border-brand-green/40 backdrop-blur-sm animate-bounce-slight">
+                <span class="text-brand-green font-bold text-sm uppercase tracking-wider flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+                    Disponible Ahora en Piura
+                </span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+                Taxi en Piura 24/7 <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-400">Rápido, Seguro y Confiable</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light">
+                Olvídate de esperar. Llega a tu destino en minutos con atención inmediata y conductores de confianza.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-green-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-xl shadow-green-900/40 flex items-center justify-center gap-3">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    Pedir Taxi por WhatsApp
+                </a>
+                <a href="tel:+51949339864" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-lg transition-all flex items-center justify-center gap-3">
+                    <i class="fas fa-phone-alt"></i>
+                    Llamar Ahora
+                </a>
+            </div>
+            
+            <div class="mt-12 flex items-center justify-center gap-8 text-gray-400 text-sm font-medium">
+                <span class="flex items-center gap-2"><i class="fas fa-shield-alt text-brand-green"></i> Seguro</span>
+                <span class="flex items-center gap-2"><i class="fas fa-clock text-brand-green"></i> 24 Horas</span>
+                <span class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-green"></i> Todo Piura</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="py-20 bg-brand-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">¿Por qué elegir <span class="text-brand-green">Flores Vip</span>?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">No somos solo un taxi, somos tu solución de transporte premium en Piura.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-green transition-colors">
+                        <i class="fas fa-headset text-2xl text-brand-green group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Atención Inmediata</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Respuesta rápida por WhatsApp. Te confirmamos tu unidad en segundos.</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-green transition-colors">
+                        <i class="fas fa-user-shield text-2xl text-brand-green group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Conductores Confiables</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Personal verificado, uniforme y capacitado para tu seguridad.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-green transition-colors">
+                        <i class="fas fa-map-marked-alt text-2xl text-brand-green group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Cobertura Total</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Llegamos a cualquier punto de Piura y alrededores.</p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-green transition-colors">
+                        <i class="fas fa-car text-2xl text-brand-green group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Unidades Modernas</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Vehículos limpios, cómodos y en perfecto estado mecánico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="como-funciona" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Tu taxi en <span class="text-brand-green">3 pasos simples</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-brand-green/20 via-brand-green to-brand-green/20 z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-gray-800 border-4 border-brand-dark rounded-full flex items-center justify-center mb-6 shadow-lg shadow-brand-green/20">
+                        <span class="text-3xl font-bold text-brand-green">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Escribe al WhatsApp</h3>
+                    <p class="text-gray-400 px-4">Haz clic en el botón y envíanos un mensaje directo.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-gray-800 border-4 border-brand-dark rounded-full flex items-center justify-center mb-6 shadow-lg shadow-brand-green/20">
+                        <span class="text-3xl font-bold text-brand-green">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Indica tu Ubicación</h3>
+                    <p class="text-gray-400 px-4">Dinos dónde estás y a dónde quieres ir.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-gray-800 border-4 border-brand-dark rounded-full flex items-center justify-center mb-6 shadow-lg shadow-brand-green/20">
+                        <span class="text-3xl font-bold text-brand-green">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Recibe tu Taxi</h3>
+                    <p class="text-gray-400 px-4">Tu conductor llegará en minutos para recogerte.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" class="inline-flex items-center gap-2 text-brand-green font-bold hover:text-white transition-colors">
+                    Empezar ahora <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="servicios" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Servicios diseñados para ti</h2>
+                    <p class="text-gray-400 mb-8 text-lg">Ya sea para ir al trabajo, al aeropuerto o una salida nocturna, tenemos la unidad perfecta.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-city text-brand-green text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Taxi Urbano</h4>
+                                <p class="text-gray-400 text-sm">Traslados rápidos dentro de toda la ciudad de Piura.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-plane text-brand-green text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Traslados al Aeropuerto</h4>
+                                <p class="text-gray-400 text-sm">Puntualidad garantizada para que no pierdas tu vuelo.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-briefcase text-brand-green text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Servicio Empresarial</h4>
+                                <p class="text-gray-400 text-sm">Facturación y cuentas corporativas disponibles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-brand-green/20 rounded-2xl blur-xl"></div>
+                    <img src="https://image.qwenlm.ai/public_source/8774006c-f779-49e1-a959-f70dbf2b08ff/135514433-4e1b-4da9-9948-4b318c4e7271.png" alt="Logo Flores Vip" class="relative rounded-2xl shadow-2xl border border-gray-800 w-full max-w-md mx-auto transform rotate-3 hover:rotate-0 transition-transform duration-500 bg-white p-8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-white mb-16">Lo que dicen nuestros clientes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-brand-dark p-6 rounded-xl border border-gray-800">
+                    <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Excelente servicio. El conductor llegó en 5 minutos y el auto estaba impecable. Muy recomendados para ir al aeropuerto."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center font-bold text-white">JC</div>
+                        <div>
+                            <p class="text-white font-bold text-sm">Juan Carlos M.</p>
+                            <p class="text-gray-500 text-xs">Piura</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-brand-dark p-6 rounded-xl border border-gray-800">
+                    <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Me encanta que se pueda pedir por WhatsApp tan rápido. La atención es muy amable y segura."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center font-bold text-white">AL</div>
+                        <div>
+                            <p class="text-white font-bold text-sm">Andrea L.</p>
+                            <p class="text-gray-500 text-xs">Castilla</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-brand-dark p-6 rounded-xl border border-gray-800">
+                    <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Siempre los uso para mis viajes de trabajo. Puntuales y profesionales. El mejor taxi de Piura."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center font-bold text-white">RP</div>
+                        <div>
+                            <p class="text-white font-bold text-sm">Roberto P.</p>
+                            <p class="text-gray-500 text-xs">Empresario</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-green"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">¿Listo para viajar seguro?</h2>
+            <p class="text-green-100 text-lg mb-10 max-w-2xl mx-auto">No esperes más. Solicita tu taxi Flores Vip ahora y viaja cómodo las 24 horas.</p>
+            <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" class="inline-block bg-white text-brand-green px-10 py-5 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition-all transform hover:scale-105">
+                <i class="fab fa-whatsapp mr-2"></i> Solicitar Taxi Ahora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <img src="https://image.qwenlm.ai/public_source/8774006c-f779-49e1-a959-f70dbf2b08ff/135514433-4e1b-4da9-9948-4b318c4e7271.png" alt="Logo Footer" class="h-10 w-auto">
+                    <span class="font-bold text-lg text-white">FLORES<span class="text-brand-green">VIP</span></span>
+                </div>
+                
+                <div class="text-center md:text-right text-gray-400 text-sm">
+                    <p class="mb-1"><i class="fas fa-phone mr-2 text-brand-green"></i> 949 339 864</p>
+                    <p class="mb-1"><i class="fas fa-map-marker-alt mr-2 text-brand-green"></i> Piura, Perú</p>
+                    <p><i class="fas fa-clock mr-2 text-brand-green"></i> Servicio 24/7</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-900 text-center text-gray-600 text-xs">
+                &copy; 2023 Taxi Flores Vip. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" target="_blank" class="whatsapp-float bg-[#25D366] hover:bg-[#20bd5a] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg animate-pulse-slow">
+        <i class="fab fa-whatsapp text-4xl"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('h-20', 'h-16');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.replace('h-16', 'h-20');
+            }
+        });
+    </script>
+</body>
+</html>
+```
