@@ -168,6 +168,38 @@
             object-position: center;
         }
 
+        /* Dark Overlay for Better Text Readability */
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.8) 0%,
+                rgba(0, 0, 0, 0.6) 40%,
+                rgba(0, 0, 0, 0.4) 70%,
+                rgba(0, 0, 0, 0.2) 100%
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-slide img {
+            z-index: 0;
+        }
+
+        /* Mobile: Stronger overlay for better readability */
+        @media (max-width: 768px) {
+            .hero-slide::before {
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.7) 0%,
+                    rgba(0, 0, 0, 0.6) 50%,
+                    rgba(0, 0, 0, 0.5) 100%
+                );
+            }
+        }
+
         .hero-bg::after {
             content: '';
             position: absolute;
@@ -581,7 +613,7 @@
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto w-full relative z-10">
+        <div class="max-w-7xl mx-auto w-full relative z-20">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Left: Content -->
                 <div class="text-center lg:text-left fade-in-up">
