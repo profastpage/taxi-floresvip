@@ -340,6 +340,14 @@
             .vehicle-grid {
                 grid-template-columns: 1fr;
             }
+
+            .cursor-pointer {
+                cursor: pointer;
+            }
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
         }
 
         /* Section Dividers */
@@ -576,60 +584,60 @@
 
                 <!-- Right: Calculator (Desktop) -->
                 <div class="hidden lg:block fade-in-up delay-2">
-                    <div class="calculator-card rounded-2xl p-6 sm:p-8">
-                        <div class="text-center mb-6">
-                            <h2 class="text-2xl font-bold text-white mb-2">Cotiza tu viaje</h2>
-                            <p class="text-gray-400 text-sm">Obtén una tarifa estimada al instante</p>
+                    <div class="calculator-card rounded-2xl p-6">
+                        <div class="text-center mb-5">
+                            <h2 class="text-xl font-bold text-white mb-1">Cotiza tu viaje en segundos</h2>
+                            <p class="text-gray-400 text-xs">Recibe una tarifa referencial y confirma por WhatsApp al instante</p>
                         </div>
 
-                        <form id="calculator-form" class="space-y-4">
+                        <form id="calculator-form" class="space-y-3">
                             <!-- Origen -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">
-                                    <i class="fas fa-map-marker-alt text-[#FFD700] mr-2"></i>Origen
+                                <label class="block text-xs font-medium text-gray-400 mb-1.5">
+                                    <i class="fas fa-map-marker-alt text-[#FFD700] mr-1.5"></i>Origen
                                 </label>
                                 <input
                                     type="text"
                                     id="origen"
-                                    placeholder="Ej: Aeropuerto, Centro, Hotel..."
-                                    class="input-field w-full px-4 py-3.5 text-white"
+                                    placeholder="Ej: Centro, Aeropuerto, Hotel..."
+                                    class="input-field w-full px-3.5 py-3 text-white text-sm"
                                     autocomplete="off"
                                 >
                             </div>
 
                             <!-- Destino -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">
-                                    <i class="fas fa-location-arrow text-[#FFD700] mr-2"></i>Destino
+                                <label class="block text-xs font-medium text-gray-400 mb-1.5">
+                                    <i class="fas fa-location-arrow text-[#FFD700] mr-1.5"></i>Destino
                                 </label>
                                 <input
                                     type="text"
                                     id="destino"
-                                    placeholder="Ej: Aeropuerto, Centro, Hotel..."
-                                    class="input-field w-full px-4 py-3.5 text-white"
+                                    placeholder="Ej: Centro, Aeropuerto, Hotel..."
+                                    class="input-field w-full px-3.5 py-3 text-white text-sm"
                                     autocomplete="off"
                                 >
                             </div>
 
                             <!-- Tipo de Vehículo -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">
-                                    <i class="fas fa-car text-[#FFD700] mr-2"></i>Tipo de vehículo
+                                <label class="block text-xs font-medium text-gray-400 mb-2">
+                                    <i class="fas fa-car text-[#FFD700] mr-1.5"></i>Tipo de vehículo
                                 </label>
-                                <div class="vehicle-grid grid grid-cols-3 gap-3">
-                                    <div class="vehicle-option selected p-4 text-center" data-vehicle="auto" data-price="0">
-                                        <i class="fas fa-car vehicle-icon text-2xl mb-2"></i>
-                                        <div class="text-white font-semibold text-sm">Auto</div>
+                                <div class="vehicle-grid grid grid-cols-3 gap-2">
+                                    <div class="vehicle-option selected p-3 text-center cursor-pointer">
+                                        <i class="fas fa-car vehicle-icon text-xl mb-1"></i>
+                                        <div class="text-white font-semibold text-xs">Auto</div>
                                         <div class="text-[#FFD700] text-xs font-bold">Base</div>
                                     </div>
-                                    <div class="vehicle-option p-4 text-center" data-vehicle="sedan" data-price="5">
-                                        <i class="fas fa-car-side vehicle-icon text-2xl mb-2"></i>
-                                        <div class="text-white font-semibold text-sm">Sedán</div>
+                                    <div class="vehicle-option p-3 text-center cursor-pointer">
+                                        <i class="fas fa-car-side vehicle-icon text-xl mb-1"></i>
+                                        <div class="text-white font-semibold text-xs">Sedán</div>
                                         <div class="text-[#FFD700] text-xs font-bold">+S/5</div>
                                     </div>
-                                    <div class="vehicle-option p-4 text-center" data-vehicle="suv" data-price="10">
-                                        <i class="fas fa-shuttle-van vehicle-icon text-2xl mb-2"></i>
-                                        <div class="text-white font-semibold text-sm">Camioneta</div>
+                                    <div class="vehicle-option p-3 text-center cursor-pointer">
+                                        <i class="fas fa-shuttle-van vehicle-icon text-xl mb-1"></i>
+                                        <div class="text-white font-semibold text-xs">Camioneta</div>
                                         <div class="text-[#FFD700] text-xs font-bold">+S/10</div>
                                     </div>
                                 </div>
@@ -637,41 +645,54 @@
 
                             <!-- Horario -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">
-                                    <i class="fas fa-clock text-[#FFD700] mr-2"></i>Horario
+                                <label class="block text-xs font-medium text-gray-400 mb-2">
+                                    <i class="fas fa-clock text-[#FFD700] mr-1.5"></i>Horario
                                 </label>
                                 <div class="schedule-toggle">
-                                    <div class="schedule-option active" data-schedule="now">
+                                    <div class="schedule-option active cursor-pointer" data-schedule="now">
                                         <i class="fas fa-bolt mr-1"></i>Ahora
                                     </div>
-                                    <div class="schedule-option" data-schedule="scheduled">
+                                    <div class="schedule-option cursor-pointer" data-schedule="scheduled">
                                         <i class="fas fa-calendar mr-1"></i>Programado
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Price Display -->
-                            <div class="price-display p-5 text-center">
-                                <div class="text-gray-400 text-sm mb-2">Tarifa estimada</div>
-                                <div class="text-5xl font-extrabold text-[#FFD700] mb-2">
-                                    S/ <span id="estimated-price">16</span>
+                            <div class="price-display p-4 text-center">
+                                <div class="text-gray-400 text-xs mb-1">Tarifa estimada</div>
+                                <div class="text-4xl font-extrabold text-[#FFD700] mb-1">
+                                    Desde S/ <span id="estimated-price">16</span>
                                 </div>
                                 <div class="text-gray-500 text-xs">
                                     <i class="fas fa-info-circle mr-1"></i>
-                                    Tarifa referencial • Confirmación inmediata
+                                    Precio final se confirma por WhatsApp
+                                </div>
+                                <div class="text-gray-600 text-xs mt-1">
+                                    Tarifa referencial • Sujeta a ruta y horario
                                 </div>
                             </div>
 
                             <!-- Submit Button -->
-                            <button type="submit" class="btn-primary w-full py-4 rounded-full text-base flex items-center justify-center gap-2">
-                                <i class="fab fa-whatsapp text-xl"></i>
+                            <button type="submit" class="btn-primary w-full py-3.5 rounded-full text-sm font-bold flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-lg"></i>
                                 Reservar por WhatsApp
                             </button>
 
                             <p class="text-center text-gray-500 text-xs">
-                                <i class="fas fa-shield-alt mr-1"></i>
-                                Sin compromiso. Confirmación inmediata.
+                                <i class="fas fa-check-circle mr-1"></i>
+                                Sin compromiso • Respuesta inmediata
                             </p>
+
+                            <!-- Trust Badges -->
+                            <div class="flex justify-center gap-4 text-xs text-gray-500 pt-2">
+                                <span class="flex items-center gap-1">
+                                    <i class="fas fa-clock text-[#FFD700]"></i> 24/7
+                                </span>
+                                <span class="flex items-center gap-1">
+                                    <i class="fas fa-user-shield text-[#FFD700]"></i> Conductores verificados
+                                </span>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -680,62 +701,62 @@
     </section>
 
     <!-- Mobile Calculator Section -->
-    <section id="cotizador" class="py-16 px-4 bg-brand-dark lg:hidden">
+    <section id="cotizador" class="py-12 px-4 bg-brand-dark lg:hidden">
         <div class="max-w-md mx-auto">
-            <div class="calculator-card rounded-2xl p-6">
-                <div class="text-center mb-6">
-                    <h2 class="text-2xl font-bold text-white mb-2">Cotiza tu viaje</h2>
-                    <p class="text-gray-400 text-sm">Obtén una tarifa estimada al instante</p>
+            <div class="calculator-card rounded-2xl p-5">
+                <div class="text-center mb-5">
+                    <h2 class="text-lg font-bold text-white mb-1">Cotiza tu viaje en segundos</h2>
+                    <p class="text-gray-400 text-xs">Recibe una tarifa referencial y confirma por WhatsApp al instante</p>
                 </div>
 
-                <form id="calculator-form-mobile" class="space-y-4">
+                <form id="calculator-form-mobile" class="space-y-3">
                     <!-- Origen -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">
-                            <i class="fas fa-map-marker-alt text-[#FFD700] mr-2"></i>Origen
+                        <label class="block text-xs font-medium text-gray-400 mb-1.5">
+                            <i class="fas fa-map-marker-alt text-[#FFD700] mr-1.5"></i>Origen
                         </label>
                         <input
                             type="text"
                             id="origen-mobile"
-                            placeholder="Ej: Aeropuerto, Centro, Hotel..."
-                            class="input-field w-full px-4 py-3.5 text-white"
+                            placeholder="Ej: Centro, Aeropuerto, Hotel..."
+                            class="input-field w-full px-3.5 py-3 text-white text-sm"
                             autocomplete="off"
                         >
                     </div>
 
                     <!-- Destino -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">
-                            <i class="fas fa-location-arrow text-[#FFD700] mr-2"></i>Destino
+                        <label class="block text-xs font-medium text-gray-400 mb-1.5">
+                            <i class="fas fa-location-arrow text-[#FFD700] mr-1.5"></i>Destino
                         </label>
                         <input
                             type="text"
                             id="destino-mobile"
-                            placeholder="Ej: Aeropuerto, Centro, Hotel..."
-                            class="input-field w-full px-4 py-3.5 text-white"
+                            placeholder="Ej: Centro, Aeropuerto, Hotel..."
+                            class="input-field w-full px-3.5 py-3 text-white text-sm"
                             autocomplete="off"
                         >
                     </div>
 
                     <!-- Tipo de Vehículo -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">
-                            <i class="fas fa-car text-[#FFD700] mr-2"></i>Tipo de vehículo
+                        <label class="block text-xs font-medium text-gray-400 mb-2">
+                            <i class="fas fa-car text-[#FFD700] mr-1.5"></i>Tipo de vehículo
                         </label>
-                        <div class="vehicle-grid grid grid-cols-3 gap-3">
-                            <div class="vehicle-option selected p-4 text-center" data-vehicle="auto" data-price="0">
-                                <i class="fas fa-car vehicle-icon text-2xl mb-2"></i>
-                                <div class="text-white font-semibold text-sm">Auto</div>
+                        <div class="vehicle-grid grid grid-cols-3 gap-2">
+                            <div class="vehicle-option selected p-3 text-center cursor-pointer">
+                                <i class="fas fa-car vehicle-icon text-xl mb-1"></i>
+                                <div class="text-white font-semibold text-xs">Auto</div>
                                 <div class="text-[#FFD700] text-xs font-bold">Base</div>
                             </div>
-                            <div class="vehicle-option p-4 text-center" data-vehicle="sedan" data-price="5">
-                                <i class="fas fa-car-side vehicle-icon text-2xl mb-2"></i>
-                                <div class="text-white font-semibold text-sm">Sedán</div>
+                            <div class="vehicle-option p-3 text-center cursor-pointer">
+                                <i class="fas fa-car-side vehicle-icon text-xl mb-1"></i>
+                                <div class="text-white font-semibold text-xs">Sedán</div>
                                 <div class="text-[#FFD700] text-xs font-bold">+S/5</div>
                             </div>
-                            <div class="vehicle-option p-4 text-center" data-vehicle="suv" data-price="10">
-                                <i class="fas fa-shuttle-van vehicle-icon text-2xl mb-2"></i>
-                                <div class="text-white font-semibold text-sm">Camioneta</div>
+                            <div class="vehicle-option p-3 text-center cursor-pointer">
+                                <i class="fas fa-shuttle-van vehicle-icon text-xl mb-1"></i>
+                                <div class="text-white font-semibold text-xs">Camioneta</div>
                                 <div class="text-[#FFD700] text-xs font-bold">+S/10</div>
                             </div>
                         </div>
@@ -743,41 +764,54 @@
 
                     <!-- Horario -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">
-                            <i class="fas fa-clock text-[#FFD700] mr-2"></i>Horario
+                        <label class="block text-xs font-medium text-gray-400 mb-2">
+                            <i class="fas fa-clock text-[#FFD700] mr-1.5"></i>Horario
                         </label>
                         <div class="schedule-toggle">
-                            <div class="schedule-option active" data-schedule="now">
+                            <div class="schedule-option active cursor-pointer" data-schedule="now">
                                 <i class="fas fa-bolt mr-1"></i>Ahora
                             </div>
-                            <div class="schedule-option" data-schedule="scheduled">
+                            <div class="schedule-option cursor-pointer" data-schedule="scheduled">
                                 <i class="fas fa-calendar mr-1"></i>Programado
                             </div>
                         </div>
                     </div>
 
                     <!-- Price Display -->
-                    <div class="price-display p-5 text-center">
-                        <div class="text-gray-400 text-sm mb-2">Tarifa estimada</div>
-                        <div class="text-5xl font-extrabold text-[#FFD700] mb-2">
-                            S/ <span id="estimated-price-mobile">16</span>
+                    <div class="price-display p-4 text-center">
+                        <div class="text-gray-400 text-xs mb-1">Tarifa estimada</div>
+                        <div class="text-4xl font-extrabold text-[#FFD700] mb-1">
+                            Desde S/ <span id="estimated-price-mobile">16</span>
                         </div>
                         <div class="text-gray-500 text-xs">
                             <i class="fas fa-info-circle mr-1"></i>
-                            Tarifa referencial • Confirmación inmediata
+                            Precio final se confirma por WhatsApp
+                        </div>
+                        <div class="text-gray-600 text-xs mt-1">
+                            Tarifa referencial • Sujeta a ruta y horario
                         </div>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="btn-primary w-full py-4 rounded-full text-base flex items-center justify-center gap-2">
-                        <i class="fab fa-whatsapp text-xl"></i>
+                    <button type="submit" class="btn-primary w-full py-3.5 rounded-full text-sm font-bold flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i>
                         Reservar por WhatsApp
                     </button>
 
                     <p class="text-center text-gray-500 text-xs">
-                        <i class="fas fa-shield-alt mr-1"></i>
-                        Sin compromiso. Confirmación inmediata.
+                        <i class="fas fa-check-circle mr-1"></i>
+                        Sin compromiso • Respuesta inmediata
                     </p>
+
+                    <!-- Trust Badges -->
+                    <div class="flex justify-center gap-4 text-xs text-gray-500 pt-2">
+                        <span class="flex items-center gap-1">
+                            <i class="fas fa-clock text-[#FFD700]"></i> 24/7
+                        </span>
+                        <span class="flex items-center gap-1">
+                            <i class="fas fa-user-shield text-[#FFD700]"></i> Conductores verificados
+                        </span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -1215,6 +1249,14 @@
                     </a>
                 </div>
             </div>
+
+            <div class="section-divider mb-6"></div>
+
+            <div class="text-center">
+                <p class="text-gray-600 text-xs">
+                    Creado y desarrollado por <a href="https://wa.me/51933667414?text=Hola,%20quisiera%20informaci%C3%B3n%20sobre%20desarrollo%20web" target="_blank" class="text-[#FFD700] font-bold hover:underline">Fast Page Pro</a>
+                </p>
+            </div>
         </div>
     </footer>
 
@@ -1353,15 +1395,14 @@
 
                 const price = calculatePrice();
 
-                const message = `Hola, quisiera solicitar un taxi.
+                const message = `Hola, quiero solicitar un taxi:
 
 📍 *Origen:* ${origen}
 📍 *Destino:* ${destino}
 🚘 *Vehículo:* ${vehicleNames[selectedVehicle]}
 🕒 *Horario:* ${scheduleNames[selectedSchedule]}
-💰 *Tarifa estimada:* S/${price}
 
-¿Me confirman disponibilidad, por favor?`;
+¿Me confirman disponibilidad y precio final?`;
 
                 const encodedMessage = encodeURIComponent(message);
                 const whatsappUrl = `https://wa.me/51949339864?text=${encodedMessage}`;
