@@ -138,18 +138,34 @@
         .hero-bg {
             position: relative;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            overflow: hidden;
         }
 
-        .hero-bg::before {
-            content: '';
+        .hero-slides {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop') center/cover;
-            opacity: 0.15;
-            pointer-events: none;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .hero-bg::after {
@@ -542,7 +558,30 @@
 
     <!-- Hero Section -->
     <section class="hero-bg min-h-screen flex items-center pt-20 pb-16 px-4">
-        <div class="max-w-7xl mx-auto w-full">
+        <!-- Hero Image Slider -->
+        <div class="hero-slides">
+            <!-- Slide 1: Modern Taxi -->
+            <div class="hero-slide active">
+                <img src="https://images.unsplash.com/photo-1554672408-730436b60dde?q=80&w=2070&auto=format&fit=crop" alt="Taxi ejecutivo premium en Piura">
+            </div>
+            
+            <!-- Slide 2: City Night -->
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop" alt="Servicio de taxi nocturno 24/7">
+            </div>
+            
+            <!-- Slide 3: Airport Transfer -->
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2070&auto=format&fit=crop" alt="Traslado al aeropuerto Piura">
+            </div>
+            
+            <!-- Slide 4: Luxury Car Interior -->
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" alt="Interior premium taxi ejecutivo">
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Left: Content -->
                 <div class="text-center lg:text-left fade-in-up">
@@ -1549,6 +1588,25 @@ Probé el cotizador con estos datos:
             el.style.animationFillMode = 'forwards';
             observer.observe(el);
         });
+
+        // Hero Image Slider - Auto Rotate Every 3 Seconds
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        let currentHeroSlide = 0;
+        const heroSlideInterval = 3000; // 3 seconds
+
+        function rotateHeroSlide() {
+            // Remove active class from current slide
+            heroSlides[currentHeroSlide].classList.remove('active');
+            
+            // Move to next slide (loop back to 0 if at end)
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            
+            // Add active class to new slide
+            heroSlides[currentHeroSlide].classList.add('active');
+        }
+
+        // Auto-rotate slides
+        setInterval(rotateHeroSlide, heroSlideInterval);
     </script>
 </body>
 </html>
