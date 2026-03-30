@@ -292,6 +292,12 @@
             box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
         }
 
+        @media (max-width: 640px) {
+            .whatsapp-float span {
+                display: none;
+            }
+        }
+
         /* Animations */
         .fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
@@ -383,7 +389,7 @@
                         Cotiza tu viaje en segundos y reserva por WhatsApp con atención inmediata. Conductores confiables, unidades modernas.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6">
                         <a href="#cotizador" class="btn-primary px-8 py-4 rounded-full text-base flex items-center justify-center gap-2">
                             <i class="fas fa-calculator"></i>
                             Cotizar por WhatsApp
@@ -393,6 +399,11 @@
                             Ver servicios
                         </a>
                     </div>
+
+                    <p class="text-[#FFD700] text-sm font-semibold mb-6 flex items-center gap-2 justify-center lg:justify-start">
+                        <i class="fas fa-bolt"></i>
+                        Respuesta inmediata por WhatsApp
+                    </p>
 
                     <div class="flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-gray-500">
                         <span class="flex items-center gap-2">
@@ -487,12 +498,15 @@
                             </div>
 
                             <!-- Price Display -->
-                            <div class="price-display p-4 text-center">
-                                <div class="text-gray-400 text-sm mb-1">Tarifa estimada</div>
-                                <div class="text-3xl font-extrabold text-[#FFD700]">
+                            <div class="price-display p-5 text-center">
+                                <div class="text-gray-400 text-sm mb-2">Tarifa estimada</div>
+                                <div class="text-5xl font-extrabold text-[#FFD700] mb-2">
                                     S/ <span id="estimated-price">16</span>
                                 </div>
-                                <div class="text-gray-500 text-xs mt-1">*Tarifa referencial</div>
+                                <div class="text-gray-500 text-xs">
+                                    <i class="fas fa-info-circle mr-1"></i>
+                                    Tarifa referencial • Confirmación inmediata
+                                </div>
                             </div>
 
                             <!-- Submit Button -->
@@ -571,6 +585,30 @@
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2">Unidades Modernas</h3>
                     <p class="text-gray-400 text-sm">Vehículos limpios, cómodos y con mantenimiento al día.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="py-12 px-4 bg-gradient-to-r from-[#FFD700] to-[#E6C200]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="fade-in-up">
+                    <div class="text-3xl font-extrabold text-black mb-1">24/7</div>
+                    <div class="text-black/80 text-sm font-medium">Servicio Disponible</div>
+                </div>
+                <div class="fade-in-up delay-1">
+                    <div class="text-3xl font-extrabold text-black mb-1">100%</div>
+                    <div class="text-black/80 text-sm font-medium">Conductores Verificados</div>
+                </div>
+                <div class="fade-in-up delay-2">
+                    <div class="text-3xl font-extrabold text-black mb-1">+100</div>
+                    <div class="text-black/80 text-sm font-medium">Clientes Satisfechos</div>
+                </div>
+                <div class="fade-in-up delay-3">
+                    <div class="text-3xl font-extrabold text-black mb-1">&lt;5 min</div>
+                    <div class="text-black/80 text-sm font-medium">Tiempo de Respuesta</div>
                 </div>
             </div>
         </div>
@@ -678,6 +716,22 @@
         </div>
     </section>
 
+    <!-- Mid-Page CTA -->
+    <section class="py-16 px-4 bg-brand-dark">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+                ¿Listo para tu viaje?
+            </h3>
+            <p class="text-gray-400 mb-6">
+                Taxi en minutos. Servicio seguro y confiable las 24 horas.
+            </p>
+            <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi%20ahora.%20%C2%BFCu%C3%A1nto%20demoran%3F" class="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full text-base font-bold">
+                <i class="fab fa-whatsapp text-xl"></i>
+                Pedir Taxi Ahora
+            </a>
+        </div>
+    </section>
+
     <!-- Testimonials -->
     <section class="py-20 px-4 bg-brand-black">
         <div class="max-w-7xl mx-auto">
@@ -749,20 +803,30 @@
     <section class="py-20 px-4 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-[#FFD700] to-[#E6C200]"></div>
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-        
+
         <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-black/10 rounded-full px-4 py-2 mb-6">
+                <span class="w-2 h-2 bg-black rounded-full animate-pulse"></span>
+                <span class="text-black text-sm font-semibold">Disponible ahora</span>
+            </div>
+            
             <h2 class="text-3xl sm:text-5xl font-extrabold text-black mb-4">
-                ¿Necesitas un taxi ahora mismo?
+                ¿Necesitas un taxi ahora?
             </h2>
             <p class="text-black/80 text-lg mb-8 max-w-2xl mx-auto">
-                Cotiza en segundos y reserva por WhatsApp con atención inmediata.
+                Escríbenos y te atendemos en minutos. Taxi seguro, rápido y disponible 24/7.
             </p>
-            <a href="https://wa.me/51949339864?text=Hola,%20necesito%20reservar%20un%20taxi%20ahora%20mismo.%20%C2%BFCu%C3%A1nto%20demoran%20en%20llegar%3F" class="inline-flex items-center gap-3 bg-black text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl hover:bg-gray-900 transition-all transform hover:scale-105">
+            <a href="https://wa.me/51949339864?text=Hola,%20necesito%20un%20taxi%20ahora.%20%C2%BFPodr%C3%ADan%20ayudarme%20con%20urgencia%3F" class="inline-flex items-center gap-3 bg-black text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl hover:bg-gray-900 transition-all transform hover:scale-105">
                 <i class="fab fa-whatsapp text-2xl"></i>
-                Reservar ahora
+                Reservar por WhatsApp
             </a>
-            <p class="text-black/60 text-sm mt-4">
-                <i class="fas fa-bolt mr-1"></i>Respuesta en menos de 1 minuto
+            <p class="text-black/60 text-sm mt-4 flex items-center justify-center gap-4">
+                <span class="flex items-center gap-1">
+                    <i class="fas fa-bolt"></i>Respuesta inmediata
+                </span>
+                <span class="flex items-center gap-1">
+                    <i class="fas fa-clock"></i>24/7
+                </span>
             </p>
         </div>
     </section>
@@ -822,8 +886,11 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/51949339864?text=Hola,%20necesito%20un%20taxi%20con%20urgencia.%20%C2%BFPodr%C3%ADan%20ayudarme%3F" target="_blank" class="whatsapp-float w-14 h-14 rounded-full flex items-center justify-center animate-float">
+    <a href="https://wa.me/51949339864?text=Hola,%20necesito%20un%20taxi%20con%20urgencia.%20%C2%BFPodr%C3%ADan%20ayudarme%3F" target="_blank" class="whatsapp-float w-14 h-14 rounded-full flex items-center justify-center animate-float group">
         <i class="fab fa-whatsapp text-3xl text-white"></i>
+        <span class="absolute right-full mr-3 bg-white text-black px-3 py-1.5 rounded-lg text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <i class="fas fa-bolt mr-1"></i>Respuesta inmediata
+        </span>
     </a>
 
     <!-- Scripts -->
