@@ -390,7 +390,7 @@
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6">
-                        <a href="#cotizador" class="btn-primary px-8 py-4 rounded-full text-base flex items-center justify-center gap-2">
+                        <a href="#cotizador" class="btn-primary px-8 py-4 rounded-full text-base flex items-center justify-center gap-2 scroll-smooth-btn">
                             <i class="fas fa-calculator"></i>
                             Cotizar por WhatsApp
                         </a>
@@ -421,8 +421,8 @@
                     </div>
                 </div>
 
-                <!-- Right: Calculator -->
-                <div class="fade-in-up delay-2">
+                <!-- Right: Calculator (Desktop) -->
+                <div class="hidden lg:block fade-in-up delay-2">
                     <div class="calculator-card rounded-2xl p-6 sm:p-8">
                         <div class="text-center mb-6">
                             <h2 class="text-2xl font-bold text-white mb-2">Cotiza tu viaje</h2>
@@ -435,10 +435,10 @@
                                 <label class="block text-sm font-medium text-gray-400 mb-2">
                                     <i class="fas fa-map-marker-alt text-[#FFD700] mr-2"></i>Origen
                                 </label>
-                                <input 
-                                    type="text" 
-                                    id="origen" 
-                                    placeholder="Ej: Aeropuerto, Centro, Hotel..." 
+                                <input
+                                    type="text"
+                                    id="origen"
+                                    placeholder="Ej: Aeropuerto, Centro, Hotel..."
                                     class="input-field w-full px-4 py-3.5 text-white"
                                     autocomplete="off"
                                 >
@@ -449,10 +449,10 @@
                                 <label class="block text-sm font-medium text-gray-400 mb-2">
                                     <i class="fas fa-location-arrow text-[#FFD700] mr-2"></i>Destino
                                 </label>
-                                <input 
-                                    type="text" 
-                                    id="destino" 
-                                    placeholder="Ej: Aeropuerto, Centro, Hotel..." 
+                                <input
+                                    type="text"
+                                    id="destino"
+                                    placeholder="Ej: Aeropuerto, Centro, Hotel..."
                                     class="input-field w-full px-4 py-3.5 text-white"
                                     autocomplete="off"
                                 >
@@ -522,6 +522,110 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Calculator Section -->
+    <section id="cotizador" class="py-16 px-4 bg-brand-dark lg:hidden">
+        <div class="max-w-md mx-auto">
+            <div class="calculator-card rounded-2xl p-6">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-white mb-2">Cotiza tu viaje</h2>
+                    <p class="text-gray-400 text-sm">Obtén una tarifa estimada al instante</p>
+                </div>
+
+                <form id="calculator-form-mobile" class="space-y-4">
+                    <!-- Origen -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">
+                            <i class="fas fa-map-marker-alt text-[#FFD700] mr-2"></i>Origen
+                        </label>
+                        <input
+                            type="text"
+                            id="origen-mobile"
+                            placeholder="Ej: Aeropuerto, Centro, Hotel..."
+                            class="input-field w-full px-4 py-3.5 text-white"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <!-- Destino -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">
+                            <i class="fas fa-location-arrow text-[#FFD700] mr-2"></i>Destino
+                        </label>
+                        <input
+                            type="text"
+                            id="destino-mobile"
+                            placeholder="Ej: Aeropuerto, Centro, Hotel..."
+                            class="input-field w-full px-4 py-3.5 text-white"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <!-- Tipo de Vehículo -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">
+                            <i class="fas fa-car text-[#FFD700] mr-2"></i>Tipo de vehículo
+                        </label>
+                        <div class="vehicle-grid grid grid-cols-3 gap-3">
+                            <div class="vehicle-option selected p-4 text-center" data-vehicle="auto" data-price="0">
+                                <i class="fas fa-car vehicle-icon text-2xl mb-2"></i>
+                                <div class="text-white font-semibold text-sm">Auto</div>
+                                <div class="text-[#FFD700] text-xs font-bold">Base</div>
+                            </div>
+                            <div class="vehicle-option p-4 text-center" data-vehicle="sedan" data-price="5">
+                                <i class="fas fa-car-side vehicle-icon text-2xl mb-2"></i>
+                                <div class="text-white font-semibold text-sm">Sedán</div>
+                                <div class="text-[#FFD700] text-xs font-bold">+S/5</div>
+                            </div>
+                            <div class="vehicle-option p-4 text-center" data-vehicle="suv" data-price="10">
+                                <i class="fas fa-shuttle-van vehicle-icon text-2xl mb-2"></i>
+                                <div class="text-white font-semibold text-sm">Camioneta</div>
+                                <div class="text-[#FFD700] text-xs font-bold">+S/10</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horario -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">
+                            <i class="fas fa-clock text-[#FFD700] mr-2"></i>Horario
+                        </label>
+                        <div class="schedule-toggle">
+                            <div class="schedule-option active" data-schedule="now">
+                                <i class="fas fa-bolt mr-1"></i>Ahora
+                            </div>
+                            <div class="schedule-option" data-schedule="scheduled">
+                                <i class="fas fa-calendar mr-1"></i>Programado
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Display -->
+                    <div class="price-display p-5 text-center">
+                        <div class="text-gray-400 text-sm mb-2">Tarifa estimada</div>
+                        <div class="text-5xl font-extrabold text-[#FFD700] mb-2">
+                            S/ <span id="estimated-price-mobile">16</span>
+                        </div>
+                        <div class="text-gray-500 text-xs">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Tarifa referencial • Confirmación inmediata
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-primary w-full py-4 rounded-full text-base flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        Reservar por WhatsApp
+                    </button>
+
+                    <p class="text-center text-gray-500 text-xs">
+                        <i class="fas fa-shield-alt mr-1"></i>
+                        Sin compromiso. Confirmación inmediata.
+                    </p>
+                </form>
             </div>
         </div>
     </section>
@@ -895,129 +999,132 @@
 
     <!-- Scripts -->
     <script>
-        // Calculator Logic
-        const form = document.getElementById('calculator-form');
-        const origenInput = document.getElementById('origen');
-        const destinoInput = document.getElementById('destino');
-        const priceDisplay = document.getElementById('estimated-price');
-        const vehicleOptions = document.querySelectorAll('.vehicle-option');
-        const scheduleOptions = document.querySelectorAll('.schedule-option');
+        // Calculator Logic - Reusable Function
+        function initCalculator(formId, origenId, destinoId, priceId) {
+            const form = document.getElementById(formId);
+            const origenInput = document.getElementById(origenId);
+            const destinoInput = document.getElementById(destinoId);
+            const priceDisplay = document.getElementById(priceId);
+            
+            if (!form || !origenInput || !destinoInput || !priceDisplay) return;
 
-        // Pricing configuration
-        const PRICING = {
-            locations: {
-                'aeropuerto': 20,
-                'aeropuerto': 20,
-                'gmg': 20,
-                'terminal': 15,
-                'centro': 12,
-                'hotel': 18,
-                'plaza': 14,
-                'mall': 16,
-                'universidad': 14,
-                'clinica': 16
-            },
-            basePrice: 16,
-            vehicle: {
-                'auto': 0,
-                'sedan': 5,
-                'suv': 10
-            },
-            schedule: {
-                'now': 0,
-                'scheduled': 3
-            }
-        };
+            const vehicleOptions = form.querySelectorAll('.vehicle-option');
+            const scheduleOptions = form.querySelectorAll('.schedule-option');
 
-        let selectedVehicle = 'auto';
-        let selectedSchedule = 'now';
-
-        // Calculate price based on inputs
-        function calculatePrice() {
-            const origen = origenInput.value.toLowerCase();
-            const destino = destinoInput.value.toLowerCase();
-
-            let basePrice = PRICING.basePrice;
-
-            // Check for location keywords
-            for (const [keyword, price] of Object.entries(PRICING.locations)) {
-                if (origen.includes(keyword) || destino.includes(keyword)) {
-                    basePrice = Math.max(basePrice, price);
+            // Pricing configuration
+            const PRICING = {
+                locations: {
+                    'aeropuerto': 20,
+                    'gmg': 20,
+                    'terminal': 15,
+                    'centro': 12,
+                    'hotel': 18,
+                    'plaza': 14,
+                    'mall': 16,
+                    'universidad': 14,
+                    'clinica': 16
+                },
+                basePrice: 16,
+                vehicle: {
+                    'auto': 0,
+                    'sedan': 5,
+                    'suv': 10
+                },
+                schedule: {
+                    'now': 0,
+                    'scheduled': 3
                 }
-            }
-
-            // Add vehicle surcharge
-            basePrice += PRICING.vehicle[selectedVehicle];
-
-            // Add schedule surcharge
-            basePrice += PRICING.schedule[selectedSchedule];
-
-            return basePrice;
-        }
-
-        // Update price display
-        function updatePrice() {
-            const price = calculatePrice();
-            priceDisplay.textContent = price;
-        }
-
-        // Vehicle selection
-        vehicleOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                vehicleOptions.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                selectedVehicle = option.dataset.vehicle;
-                updatePrice();
-            });
-        });
-
-        // Schedule selection
-        scheduleOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                scheduleOptions.forEach(opt => opt.classList.remove('active'));
-                option.classList.add('active');
-                selectedSchedule = option.dataset.schedule;
-                updatePrice();
-            });
-        });
-
-        // Real-time price update on input
-        origenInput.addEventListener('input', updatePrice);
-        destinoInput.addEventListener('input', updatePrice);
-
-        // Form submission
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const origen = origenInput.value.trim();
-            const destino = destinoInput.value.trim();
-
-            if (!origen || !destino) {
-                // Show error feedback
-                if (!origen) origenInput.classList.add('border-red-500');
-                if (!destino) destinoInput.classList.add('border-red-500');
-                
-                setTimeout(() => {
-                    origenInput.classList.remove('border-red-500');
-                    destinoInput.classList.remove('border-red-500');
-                }, 2000);
-                return;
-            }
-
-            const vehicleNames = {
-                'auto': 'Auto',
-                'sedan': 'Sedán',
-                'suv': 'Camioneta'
             };
 
-            const scheduleNames = {
-                'now': 'Ahora',
-                'scheduled': 'Programado'
-            };
+            let selectedVehicle = 'auto';
+            let selectedSchedule = 'now';
 
-            const price = calculatePrice();
+            // Calculate price based on inputs
+            function calculatePrice() {
+                const origen = origenInput.value.toLowerCase();
+                const destino = destinoInput.value.toLowerCase();
 
-            const message = `Hola, quisiera solicitar un taxi.
+                let basePrice = PRICING.basePrice;
+
+                // Check for location keywords
+                for (const [keyword, price] of Object.entries(PRICING.locations)) {
+                    if (origen.includes(keyword) || destino.includes(keyword)) {
+                        basePrice = Math.max(basePrice, price);
+                    }
+                }
+
+                // Add vehicle surcharge
+                basePrice += PRICING.vehicle[selectedVehicle];
+
+                // Add schedule surcharge
+                basePrice += PRICING.schedule[selectedSchedule];
+
+                return basePrice;
+            }
+
+            // Update price display
+            function updatePrice() {
+                const price = calculatePrice();
+                priceDisplay.textContent = price;
+            }
+
+            // Vehicle selection
+            vehicleOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    vehicleOptions.forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                    selectedVehicle = option.dataset.vehicle;
+                    updatePrice();
+                });
+            });
+
+            // Schedule selection
+            scheduleOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    scheduleOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                    selectedSchedule = option.dataset.schedule;
+                    updatePrice();
+                });
+            });
+
+            // Real-time price update on input
+            origenInput.addEventListener('input', updatePrice);
+            destinoInput.addEventListener('input', updatePrice);
+
+            // Form submission
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const origen = origenInput.value.trim();
+                const destino = destinoInput.value.trim();
+
+                if (!origen || !destino) {
+                    // Show error feedback
+                    if (!origen) origenInput.classList.add('border-red-500');
+                    if (!destino) destinoInput.classList.add('border-red-500');
+
+                    setTimeout(() => {
+                        origenInput.classList.remove('border-red-500');
+                        destinoInput.classList.remove('border-red-500');
+                    }, 2000);
+                    return;
+                }
+
+                const vehicleNames = {
+                    'auto': 'Auto',
+                    'sedan': 'Sedán',
+                    'suv': 'Camioneta'
+                };
+
+                const scheduleNames = {
+                    'now': 'Ahora',
+                    'scheduled': 'Programado'
+                };
+
+                const price = calculatePrice();
+
+                const message = `Hola, quisiera solicitar un taxi.
 
 📍 *Origen:* ${origen}
 📍 *Destino:* ${destino}
@@ -1027,10 +1134,32 @@
 
 ¿Me confirman disponibilidad, por favor?`;
 
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/51949339864?text=${encodedMessage}`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/51949339864?text=${encodedMessage}`;
+
+                window.open(whatsappUrl, '_blank');
+            });
+        }
+
+        // Initialize both calculators
+        document.addEventListener('DOMContentLoaded', () => {
+            // Desktop calculator
+            initCalculator('calculator-form', 'origen', 'destino', 'estimated-price');
             
-            window.open(whatsappUrl, '_blank');
+            // Mobile calculator
+            initCalculator('calculator-form-mobile', 'origen-mobile', 'destino-mobile', 'estimated-price-mobile');
+        });
+
+        // Smooth scroll for calculator button
+        document.querySelectorAll('.scroll-smooth-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
 
         // Mobile Menu Toggle
