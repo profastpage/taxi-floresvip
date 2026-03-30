@@ -234,18 +234,19 @@
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .vehicle-option:hover {
             border-color: rgba(255, 215, 0, 0.5);
             background: rgba(255, 215, 0, 0.05);
+            transform: translateY(-2px);
         }
 
         .vehicle-option.selected {
             border-color: #FFD700;
             background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
         }
 
         .vehicle-option.selected .vehicle-icon {
@@ -261,26 +262,34 @@
         .schedule-toggle {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            padding: 4px;
+            padding: 5px;
             display: flex;
-            gap: 4px;
+            gap: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .schedule-option {
             flex: 1;
-            padding: 10px 16px;
+            padding: 11px 16px;
             border-radius: 8px;
             text-align: center;
             font-weight: 600;
             font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             color: rgba(255, 255, 255, 0.6);
+            border: 1px solid transparent;
+        }
+
+        .schedule-option:hover {
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .schedule-option.active {
-            background: #FFD700;
+            background: linear-gradient(135deg, #FFD700 0%, #E6C200 100%);
             color: #0a0a0a;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+            font-weight: 700;
         }
 
         /* Price Display */
@@ -1277,7 +1286,10 @@
             const destinoInput = document.getElementById(destinoId);
             const priceDisplay = document.getElementById(priceId);
             
-            if (!form || !origenInput || !destinoInput || !priceDisplay) return;
+            if (!form || !origenInput || !destinoInput || !priceDisplay) {
+                console.log('Calculator elements not found:', { formId, origenId, destinoId, priceId });
+                return;
+            }
 
             const vehicleOptions = form.querySelectorAll('.vehicle-option');
             const scheduleOptions = form.querySelectorAll('.schedule-option');
@@ -1312,49 +1324,55 @@
 
             // Calculate price based on inputs
             function calculatePrice() {
-                const origen = origenInput.value.toLowerCase();
-                const destino = destinoInput.value.toLowerCase();
-
                 let basePrice = PRICING.basePrice;
 
-                // Check for location keywords
-                for (const [keyword, price] of Object.entries(PRICING.locations)) {
-                    if (origen.includes(keyword) || destino.includes(keyword)) {
-                        basePrice = Math.max(basePrice, price);
+                // Only check location keywords if inputs have values
+                if (origenInput.value || destinoInput.value) {
+                    const origen = origenInput.value.toLowerCase();
+                    const destino = destinoInput.value.toLowerCase();
+
+                    // Check for location keywords
+                    for (const [keyword, price] of Object.entries(PRICING.locations)) {
+                        if (origen.includes(keyword) || destino.includes(keyword)) {
+                            basePrice = Math.max(basePrice, price);
+                        }
                     }
                 }
 
                 // Add vehicle surcharge
-                basePrice += PRICING.vehicle[selectedVehicle];
+                basePrice += PRICING.vehicle[selectedVehicle] || 0;
 
                 // Add schedule surcharge
-                basePrice += PRICING.schedule[selectedSchedule];
+                basePrice += PRICING.schedule[selectedSchedule] || 0;
 
-                return basePrice;
+                // Ensure we always return a valid number (minimum base price)
+                return Math.max(basePrice, PRICING.basePrice);
             }
 
             // Update price display
             function updatePrice() {
                 const price = calculatePrice();
-                priceDisplay.textContent = price;
+                if (priceDisplay) {
+                    priceDisplay.textContent = isNaN(price) ? PRICING.basePrice : price;
+                }
             }
 
-            // Vehicle selection
+            // Vehicle selection with better feedback
             vehicleOptions.forEach(option => {
-                option.addEventListener('click', () => {
+                option.addEventListener('click', function() {
                     vehicleOptions.forEach(opt => opt.classList.remove('selected'));
-                    option.classList.add('selected');
-                    selectedVehicle = option.dataset.vehicle;
+                    this.classList.add('selected');
+                    selectedVehicle = this.dataset.vehicle || 'auto';
                     updatePrice();
                 });
             });
 
-            // Schedule selection
+            // Schedule selection with better feedback
             scheduleOptions.forEach(option => {
-                option.addEventListener('click', () => {
+                option.addEventListener('click', function() {
                     scheduleOptions.forEach(opt => opt.classList.remove('active'));
-                    option.classList.add('active');
-                    selectedSchedule = option.dataset.schedule;
+                    this.classList.add('active');
+                    selectedSchedule = this.dataset.schedule || 'now';
                     updatePrice();
                 });
             });
@@ -1362,6 +1380,9 @@
             // Real-time price update on input
             origenInput.addEventListener('input', updatePrice);
             destinoInput.addEventListener('input', updatePrice);
+
+            // Initialize price on load (ensure it shows base price)
+            updatePrice();
 
             // Form submission
             form.addEventListener('submit', (e) => {
@@ -1411,7 +1432,7 @@
             });
         }
 
-        // Initialize both calculators
+        // Initialize both calculators when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             // Desktop calculator
             initCalculator('calculator-form', 'origen', 'destino', 'estimated-price');
