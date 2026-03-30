@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Flores Vip - Servicio 24/7 en Piura</title>
-    <meta name="description" content="Servicio de taxi premium en Piura. Rápido, seguro y confiable las 24 horas. Pide tu taxi por WhatsApp.">
+    <title>Taxi Flores Vip - Taxi Seguro en Piura 24/7</title>
+    <meta name="description" content="Cotiza tu viaje en segundos y reserva por WhatsApp. Taxi seguro, rápido y disponible 24/7 en Piura.">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,33 +22,30 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            green: '#16a34a',
-                            dark: '#0f172a',
-                            light: '#f8fafc',
-                            accent: '#22c55e'
+                            yellow: '#FFD700',
+                            yellowDark: '#E6C200',
+                            black: '#0a0a0a',
+                            dark: '#121212',
+                            gray: '#1a1a1a',
+                            light: '#f5f5f5'
                         }
                     },
                     animation: {
+                        'float': 'float 3s ease-in-out infinite',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slight': 'bounce-slight 2s infinite',
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
                         'slide-up': 'slideUp 0.6s ease-out forwards',
                     },
                     keyframes: {
-                        'bounce-slight': {
-                            '0%, 100%': { transform: 'translateY(-5%)' },
-                            '50%': { transform: 'translateY(0)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         },
                         slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
@@ -58,23 +55,234 @@
     </script>
 
     <style>
-        /* Custom Utilities */
-        .glass-nav {
-            background: rgba(15, 23, 42, 0.9);
+        /* Base Styles */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFD700;
+            border-radius: 4px;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(26, 26, 26, 0.8);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .hero-overlay {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.75) 50%, rgba(22, 163, 74, 0.3) 100%);
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Hero Background */
+        .hero-bg {
+            position: relative;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop') center/cover;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(255, 215, 0, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Calculator Card */
+        .calculator-card {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                        0 0 0 1px rgba(255, 215, 0, 0.05),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .calculator-card:hover {
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(255, 215, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Form Inputs */
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #FFD700;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700 0%, #E6C200 100%);
+            color: #0a0a0a;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Vehicle Selector */
+        .vehicle-option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .vehicle-option:hover {
+            border-color: rgba(255, 215, 0, 0.5);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .vehicle-option.selected {
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .vehicle-option.selected .vehicle-icon {
+            color: #FFD700;
+        }
+
+        .vehicle-icon {
+            color: rgba(255, 255, 255, 0.5);
+            transition: color 0.3s ease;
+        }
+
+        /* Schedule Toggle */
+        .schedule-toggle {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 4px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .schedule-option {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .schedule-option.active {
+            background: #FFD700;
+            color: #0a0a0a;
+        }
+
+        /* Price Display */
+        .price-display {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+        }
+
+        /* Cards */
+        .feature-card {
+            background: linear-gradient(180deg, rgba(26, 26, 26, 0.8) 0%, rgba(15, 15, 15, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                        0 0 0 1px rgba(255, 215, 0, 0.1);
+        }
+
+        .feature-icon {
+            background: linear-gradient(135deg, #FFD700 0%, #E6C200 100%);
+            color: #0a0a0a;
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        /* Floating WhatsApp */
         .whatsapp-float {
             position: fixed;
             bottom: 24px;
             right: 24px;
             z-index: 100;
+            background: #25D366;
             box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
             transition: all 0.3s ease;
         }
@@ -84,551 +292,452 @@
             box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
         }
 
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 700px;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        /* Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
         }
 
-        .hero-image {
-            position: relative;
-            width: 100%;
-            height: 100%;
+        .fade-in-up.delay-1 { animation-delay: 0.1s; }
+        .fade-in-up.delay-2 { animation-delay: 0.2s; }
+        .fade-in-up.delay-3 { animation-delay: 0.3s; }
+        .fade-in-up.delay-4 { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .hero-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, rgba(15,23,42,0.3) 0%, rgba(15,23,42,0.1) 100%);
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 5rem;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            position: relative;
-        }
-
-        .hero-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(22, 163, 74, 0.08), transparent 70%);
-            pointer-events: none;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 1024px) {
-            .hero-section {
+        /* Mobile Optimizations */
+        @media (max-width: 640px) {
+            .calculator-card {
+                padding: 20px !important;
+            }
+            
+            .vehicle-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .hero-image {
-                position: absolute;
-                inset: 0;
-                opacity: 0.4;
-            }
-            
-            .hero-image::after {
-                background: linear-gradient(180deg, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0.9) 100%);
-            }
-            
-            .hero-content {
-                padding: 2rem;
-                background: transparent;
-            }
-            
-            .hero-content::before {
-                background: radial-gradient(ellipse at 50% 30%, rgba(22, 163, 74, 0.12), transparent 70%);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-content {
-                padding: 1.5rem;
-                justify-content: center;
-            }
-            
-            .hero-content > div {
-                text-align: center !important;
-            }
-            
-            .hero-content .flex-wrap {
-                justify-content: center;
-            }
-            
-            .hero-content .flex-col-sm {
-                flex-direction: column;
-            }
-        }
-
-        /* Slider Indicators */
-        .slider-indicators {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .slider-indicator {
-            width: 12px;
-            height: 4px;
-            border-radius: 2px;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slider-indicator.active {
-            background: #16a34a;
-            width: 32px;
-        }
-
-        .slider-indicator:hover {
-            background: rgba(22, 163, 74, 0.7);
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #16a34a, #22c55e);
-            border-radius: 5px;
-        }
-
-        /* Card hover effects */
-        .feature-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(22, 163, 74, 0.15);
-        }
-
-        /* Button glow effect */
-        .btn-glow {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-glow:hover::before {
-            left: 100%;
-        }
-
-        /* Section divider */
-        .wave-divider {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-        }
-
-        .wave-divider svg {
-            display: block;
-            width: 100%;
-            height: 80px;
         }
     </style>
 </head>
-<body class="bg-brand-dark text-white antialiased font-sans">
+<body>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img src="https://image.qwenlm.ai/public_source/8774006c-f779-49e1-a959-f70dbf2b08ff/135514433-4e1b-4da9-9948-4b318c4e7271.png" alt="Taxi Flores Vip Logo" class="h-12 w-auto object-contain">
-                    <span class="font-bold text-xl tracking-tight hidden sm:block">FLORES<span class="text-brand-green">VIP</span></span>
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <img src="https://image.qwenlm.ai/public_source/8774006c-f779-49e1-a959-f70dbf2b08ff/135514433-4e1b-4da9-9948-4b318c4e7271.png" alt="Taxi Flores Vip" class="h-10 w-auto">
+                    <span class="font-bold text-lg text-white hidden sm:block">FLORES<span class="text-[#FFD700]">VIP</span></span>
                 </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#beneficios" class="text-gray-300 hover:text-brand-green transition-colors text-sm font-medium">Beneficios</a>
-                    <a href="#como-funciona" class="text-gray-300 hover:text-brand-green transition-colors text-sm font-medium">Cómo Funciona</a>
-                    <a href="#servicios" class="text-gray-300 hover:text-brand-green transition-colors text-sm font-medium">Servicios</a>
-                    <a href="#testimonios" class="text-gray-300 hover:text-brand-green transition-colors text-sm font-medium">Testimonios</a>
-                    <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" target="_blank" class="btn-glow bg-brand-green hover:bg-green-600 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all transform hover:scale-105 shadow-lg shadow-green-900/50 flex items-center gap-2">
-                        <i class="fab fa-whatsapp"></i> Pedir Taxi
+                
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#beneficios" class="text-gray-400 hover:text-[#FFD700] transition-colors text-sm font-medium">Beneficios</a>
+                    <a href="#servicios" class="text-gray-400 hover:text-[#FFD700] transition-colors text-sm font-medium">Servicios</a>
+                    <a href="#como-funciona" class="text-gray-400 hover:text-[#FFD700] transition-colors text-sm font-medium">Cómo Funciona</a>
+                    <a href="https://wa.me/51949339864?text=Hola,%20necesito%20un%20taxi" class="btn-primary px-5 py-2.5 rounded-full text-sm">
+                        <i class="fab fa-whatsapp mr-2"></i>Pedir Taxi
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark/98 border-t border-gray-800 backdrop-blur-lg">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#beneficios" class="block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-green hover:bg-gray-800 rounded-md">Beneficios</a>
-                <a href="#como-funciona" class="block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-green hover:bg-gray-800 rounded-md">Cómo Funciona</a>
-                <a href="#servicios" class="block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-green hover:bg-gray-800 rounded-md">Servicios</a>
-                <a href="#testimonios" class="block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-green hover:bg-gray-800 rounded-md">Testimonios</a>
-                <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" class="block w-full text-center mt-4 bg-brand-green text-white px-4 py-3 rounded-lg font-bold">
-                    Pedir Taxi Ahora
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-gray-800">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#beneficios" class="block py-2 text-gray-400 hover:text-[#FFD700]">Beneficios</a>
+                <a href="#servicios" class="block py-2 text-gray-400 hover:text-[#FFD700]">Servicios</a>
+                <a href="#como-funciona" class="block py-2 text-gray-400 hover:text-[#FFD700]">Cómo Funciona</a>
+                <a href="https://wa.me/51949339864?text=Hola,%20necesito%20un%20taxi" class="block w-full btn-primary text-center py-3 rounded-full">
+                    <i class="fab fa-whatsapp mr-2"></i>Pedir Taxi
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section - Split Layout -->
-    <header class="hero-section">
-        <!-- Left: Single Image -->
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop" alt="Taxi aplicativo en Piura - Servicio rápido y seguro">
-        </div>
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-20 pb-16 px-4">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Content -->
+                <div class="text-center lg:text-left fade-in-up">
+                    <div class="inline-flex items-center gap-2 bg-[#FFD700]/10 border border-[#FFD700]/30 rounded-full px-4 py-2 mb-6">
+                        <span class="w-2 h-2 bg-[#FFD700] rounded-full animate-pulse"></span>
+                        <span class="text-[#FFD700] text-sm font-semibold">Disponible 24/7 en Piura</span>
+                    </div>
 
-        <!-- Right: Content -->
-        <div class="hero-content">
-            <div class="relative z-10 text-left max-w-lg">
-                <div class="inline-block px-5 py-2 mb-6 rounded-full bg-brand-green/25 border border-brand-green/50 backdrop-blur-sm">
-                    <span class="text-brand-green font-bold text-sm uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
-                        Disponible 24/7 en Piura y Castilla
-                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                        Taxi seguro, rápido y <span class="text-[#FFD700]">disponible 24/7</span>
+                    </h1>
+
+                    <p class="text-lg text-gray-400 mb-8 max-w-xl mx-auto lg:mx-0">
+                        Cotiza tu viaje en segundos y reserva por WhatsApp con atención inmediata. Conductores confiables, unidades modernas.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+                        <a href="#cotizador" class="btn-primary px-8 py-4 rounded-full text-base flex items-center justify-center gap-2">
+                            <i class="fas fa-calculator"></i>
+                            Cotizar por WhatsApp
+                        </a>
+                        <a href="#servicios" class="btn-secondary px-8 py-4 rounded-full text-base flex items-center justify-center gap-2">
+                            <i class="fas fa-car"></i>
+                            Ver servicios
+                        </a>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-gray-500">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-[#FFD700]"></i>
+                            Respuesta rápida
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-[#FFD700]"></i>
+                            Atención inmediata
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-[#FFD700]"></i>
+                            Disponible 24/7
+                        </span>
+                    </div>
                 </div>
 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight tracking-tight">
-                    Taxi en Piura 24/7 <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-400">Rápido, Seguro y Confiable</span>
-                </h1>
+                <!-- Right: Calculator -->
+                <div class="fade-in-up delay-2">
+                    <div class="calculator-card rounded-2xl p-6 sm:p-8">
+                        <div class="text-center mb-6">
+                            <h2 class="text-2xl font-bold text-white mb-2">Cotiza tu viaje</h2>
+                            <p class="text-gray-400 text-sm">Obtén una tarifa estimada al instante</p>
+                        </div>
 
-                <p class="text-lg text-gray-300 mb-8 leading-relaxed">
-                    Olvídate de esperar. Llega a tu destino en minutos con atención inmediata por WhatsApp y conductores de máxima confianza.
-                </p>
+                        <form id="calculator-form" class="space-y-4">
+                            <!-- Origen -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">
+                                    <i class="fas fa-map-marker-alt text-[#FFD700] mr-2"></i>Origen
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="origen" 
+                                    placeholder="Ej: Aeropuerto, Centro, Hotel..." 
+                                    class="input-field w-full px-4 py-3.5 text-white"
+                                    autocomplete="off"
+                                >
+                            </div>
 
-                <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                    <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" target="_blank" class="btn-glow w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-green-600 text-white rounded-full font-bold text-base transition-all transform hover:scale-105 shadow-2xl shadow-green-900/50 flex items-center justify-center gap-3">
-                        <i class="fab fa-whatsapp text-2xl"></i>
-                        Pedir Taxi por WhatsApp
-                    </a>
-                    <a href="tel:+51949339864" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-base transition-all flex items-center justify-center gap-3 hover:scale-105">
-                        <i class="fas fa-phone-alt"></i>
-                        Llamar Ahora
-                    </a>
-                </div>
+                            <!-- Destino -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">
+                                    <i class="fas fa-location-arrow text-[#FFD700] mr-2"></i>Destino
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="destino" 
+                                    placeholder="Ej: Aeropuerto, Centro, Hotel..." 
+                                    class="input-field w-full px-4 py-3.5 text-white"
+                                    autocomplete="off"
+                                >
+                            </div>
 
-                <div class="flex flex-wrap gap-3">
-                    <span class="flex items-center gap-2 bg-white/5 px-4 py-2.5 rounded-full backdrop-blur-sm text-gray-300 text-sm">
-                        <i class="fas fa-shield-alt text-brand-green"></i> 100% Seguro
-                    </span>
-                    <span class="flex items-center gap-2 bg-white/5 px-4 py-2.5 rounded-full backdrop-blur-sm text-gray-300 text-sm">
-                        <i class="fas fa-clock text-brand-green"></i> 24 Horas
-                    </span>
-                    <span class="flex items-center gap-2 bg-white/5 px-4 py-2.5 rounded-full backdrop-blur-sm text-gray-300 text-sm">
-                        <i class="fas fa-map-marker-alt text-brand-green"></i> Todo Piura
-                    </span>
-                    <span class="flex items-center gap-2 bg-white/5 px-4 py-2.5 rounded-full backdrop-blur-sm text-gray-300 text-sm">
-                        <i class="fas fa-car text-brand-green"></i> Unidades Modernas
-                    </span>
-                </div>
-            </div>
-        </div>
+                            <!-- Tipo de Vehículo -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">
+                                    <i class="fas fa-car text-[#FFD700] mr-2"></i>Tipo de vehículo
+                                </label>
+                                <div class="vehicle-grid grid grid-cols-3 gap-3">
+                                    <div class="vehicle-option selected p-4 text-center" data-vehicle="auto" data-price="0">
+                                        <i class="fas fa-car vehicle-icon text-2xl mb-2"></i>
+                                        <div class="text-white font-semibold text-sm">Auto</div>
+                                        <div class="text-[#FFD700] text-xs font-bold">Base</div>
+                                    </div>
+                                    <div class="vehicle-option p-4 text-center" data-vehicle="sedan" data-price="5">
+                                        <i class="fas fa-car-side vehicle-icon text-2xl mb-2"></i>
+                                        <div class="text-white font-semibold text-sm">Sedán</div>
+                                        <div class="text-[#FFD700] text-xs font-bold">+S/5</div>
+                                    </div>
+                                    <div class="vehicle-option p-4 text-center" data-vehicle="suv" data-price="10">
+                                        <i class="fas fa-shuttle-van vehicle-icon text-2xl mb-2"></i>
+                                        <div class="text-white font-semibold text-sm">Camioneta</div>
+                                        <div class="text-[#FFD700] text-xs font-bold">+S/10</div>
+                                    </div>
+                                </div>
+                            </div>
 
-        <!-- Slider Indicators -->
-        <div class="absolute bottom-8 left-1/4 transform -translate-x-1/2 z-20">
-            <div class="slider-indicators">
-                <div class="slider-indicator active"></div>
-                <div class="slider-indicator"></div>
-                <div class="slider-indicator"></div>
-                <div class="slider-indicator"></div>
-            </div>
-        </div>
-    </header>
+                            <!-- Horario -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">
+                                    <i class="fas fa-clock text-[#FFD700] mr-2"></i>Horario
+                                </label>
+                                <div class="schedule-toggle">
+                                    <div class="schedule-option active" data-schedule="now">
+                                        <i class="fas fa-bolt mr-1"></i>Ahora
+                                    </div>
+                                    <div class="schedule-option" data-schedule="scheduled">
+                                        <i class="fas fa-calendar mr-1"></i>Programado
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Stats Section -->
-    <section class="py-12 bg-gradient-to-r from-brand-green to-emerald-600 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2">24/7</div>
-                    <div class="text-green-100 text-sm font-medium">Disponibilidad</div>
-                </div>
-                <div>
-                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2">+5K</div>
-                    <div class="text-green-100 text-sm font-medium">Clientes Felices</div>
-                </div>
-                <div>
-                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2">100%</div>
-                    <div class="text-green-100 text-sm font-medium">Seguro</div>
-                </div>
-                <div>
-                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2">&lt;5min</div>
-                    <div class="text-green-100 text-sm font-medium">Tiempo Promedio</div>
+                            <!-- Price Display -->
+                            <div class="price-display p-4 text-center">
+                                <div class="text-gray-400 text-sm mb-1">Tarifa estimada</div>
+                                <div class="text-3xl font-extrabold text-[#FFD700]">
+                                    S/ <span id="estimated-price">16</span>
+                                </div>
+                                <div class="text-gray-500 text-xs mt-1">*Tarifa referencial</div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn-primary w-full py-4 rounded-full text-base flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                                Reservar por WhatsApp
+                            </button>
+
+                            <p class="text-center text-gray-500 text-xs">
+                                <i class="fas fa-shield-alt mr-1"></i>
+                                Sin compromiso. Confirmación inmediata.
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Benefits Section -->
-    <section id="beneficios" class="py-24 bg-brand-dark relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-brand-green font-bold text-sm uppercase tracking-wider">Ventajas</span>
-                <h2 class="text-3xl md:text-5xl font-bold text-white mt-3 mb-4">¿Por qué elegir <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-400">Flores Vip</span>?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg">No somos solo un taxi, somos tu solución de transporte premium en Piura y Castilla.</p>
+    <section id="beneficios" class="py-20 px-4 bg-brand-dark">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+                    ¿Por qué elegir <span class="text-[#FFD700]">Flores Vip</span>?
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Más que un taxi, tu solución de transporte confiable en Piura.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Benefit 1 -->
-                <div class="feature-card bg-gray-900/60 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/50 group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-brand-green to-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-green-900/30">
-                        <i class="fas fa-headset text-2xl text-white"></i>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="feature-card p-6 fade-in-up">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-clock text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Atención Inmediata</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Respuesta rápida por WhatsApp. Te confirmamos tu unidad en segundos.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Atención 24/7</h3>
+                    <p class="text-gray-400 text-sm">Disponibles todos los días, a cualquier hora. Nunca te dejamos esperando.</p>
                 </div>
 
-                <!-- Benefit 2 -->
-                <div class="feature-card bg-gray-900/60 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/50 group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-brand-green to-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-green-900/30">
-                        <i class="fas fa-user-shield text-2xl text-white"></i>
+                <div class="feature-card p-6 fade-in-up delay-1">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-user-shield text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Conductores Confiables</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Personal verificado, uniforme y capacitado para tu seguridad total.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Conductores Confiables</h3>
+                    <p class="text-gray-400 text-sm">Personal verificado, capacitado y con experiencia para tu seguridad.</p>
                 </div>
 
-                <!-- Benefit 3 -->
-                <div class="feature-card bg-gray-900/60 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/50 group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-brand-green to-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-green-900/30">
-                        <i class="fas fa-map-marked-alt text-2xl text-white"></i>
+                <div class="feature-card p-6 fade-in-up delay-2">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Cobertura Total</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Llegamos a cualquier punto de Piura, Castilla y alrededores.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Llegada Rápida</h3>
+                    <p class="text-gray-400 text-sm">Unidades cercanas que llegan en minutos a tu ubicación.</p>
                 </div>
 
-                <!-- Benefit 4 -->
-                <div class="feature-card bg-gray-900/60 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/50 group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-brand-green to-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-green-900/30">
-                        <i class="fas fa-car text-2xl text-white"></i>
+                <div class="feature-card p-6 fade-in-up">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-plane text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Unidades Modernas</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Vehículos limpios, cómodos, con aire acondicionado y perfecto mantenimiento.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How it Works -->
-    <section id="como-funciona" class="py-24 bg-gradient-to-b from-gray-900 to-brand-dark relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-brand-green font-bold text-sm uppercase tracking-wider">Proceso Simple</span>
-                <h2 class="text-3xl md:text-5xl font-bold text-white mt-3 mb-4">Tu taxi en <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-400">3 pasos simples</span></h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                <!-- Connecting Line (Desktop) -->
-                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-gradient-to-r from-brand-green/20 via-brand-green to-brand-green/20 z-0 rounded-full"></div>
-
-                <!-- Step 1 -->
-                <div class="relative z-10 text-center group">
-                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-brand-green to-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-2xl shadow-brand-green/30 group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-4xl font-extrabold text-white">1</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Escribe al WhatsApp</h3>
-                    <p class="text-gray-400 px-4 leading-relaxed">Haz clic en el botón y envíanos un mensaje directo. Es gratis y rápido.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Servicio Aeropuerto</h3>
+                    <p class="text-gray-400 text-sm">Traslados puntuales al aeropuerto GMG y terminal terrestre.</p>
                 </div>
 
-                <!-- Step 2 -->
-                <div class="relative z-10 text-center group">
-                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-brand-green to-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-2xl shadow-brand-green/30 group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-4xl font-extrabold text-white">2</span>
+                <div class="feature-card p-6 fade-in-up delay-1">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fab fa-whatsapp text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Indica tu Ubicación</h3>
-                    <p class="text-gray-400 px-4 leading-relaxed">Dinos dónde estás y a dónde quieres ir. Te confirmamos al instante.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Reserva por WhatsApp</h3>
+                    <p class="text-gray-400 text-sm">Sin apps complicadas. Reserva directo por WhatsApp en segundos.</p>
                 </div>
 
-                <!-- Step 3 -->
-                <div class="relative z-10 text-center group">
-                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-brand-green to-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-2xl shadow-brand-green/30 group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-4xl font-extrabold text-white">3</span>
+                <div class="feature-card p-6 fade-in-up delay-2">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-car text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Recibe tu Taxi</h3>
-                    <p class="text-gray-400 px-4 leading-relaxed">Tu conductor llegará en minutos para recogerte de forma segura.</p>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" class="inline-flex items-center gap-2 text-brand-green font-bold text-lg hover:text-white transition-all group">
-                    Empezar ahora <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section id="servicios" class="py-24 bg-brand-dark relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-green/5 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <span class="text-brand-green font-bold text-sm uppercase tracking-wider">Nuestros Servicios</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-white mt-3 mb-6">Servicios diseñados <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-400">para ti</span></h2>
-                    <p class="text-gray-400 mb-10 text-lg leading-relaxed">Ya sea para ir al trabajo, al aeropuerto o una salida nocturna, tenemos la unidad perfecta para cada ocasión.</p>
-
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-green to-emerald-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-green-900/30">
-                                <i class="fas fa-city text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-xl mb-1">Taxi Urbano</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Traslados rápidos dentro de toda la ciudad de Piura y Castilla.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-green to-emerald-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-green-900/30">
-                                <i class="fas fa-plane-departure text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-xl mb-1">Traslados al Aeropuerto</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Puntualidad garantizada para que no pierdas tu vuelo. Servicio a GMG y aeropuertos.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-green to-emerald-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-green-900/30">
-                                <i class="fas fa-briefcase text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-xl mb-1">Servicio Empresarial</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Facturación y cuentas corporativas disponibles para tu empresa.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-green to-emerald-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-green-900/30">
-                                <i class="fas fa-moon text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-xl mb-1">Servicio Nocturno</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Salidas nocturnas, eventos y fiestas. Llegamos hasta donde estés.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="absolute -inset-6 bg-gradient-to-r from-brand-green/20 to-emerald-500/20 rounded-3xl blur-2xl"></div>
-                    <img src="https://image.qwenlm.ai/public_source/8774006c-f779-49e1-a959-f70dbf2b08ff/135514433-4e1b-4da9-9948-4b318c4e7271.png" alt="Logo Flores Vip" class="relative rounded-3xl shadow-2xl border border-gray-800 w-full max-w-md mx-auto transform rotate-3 hover:rotate-0 transition-all duration-500 bg-white/5 backdrop-blur-sm p-10">
+                    <h3 class="text-lg font-bold text-white mb-2">Unidades Modernas</h3>
+                    <p class="text-gray-400 text-sm">Vehículos limpios, cómodos y con mantenimiento al día.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Coverage Area -->
-    <section class="py-20 bg-gradient-to-r from-gray-900 to-brand-dark relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Cobertura en <span class="text-brand-green">toda Piura</span></h2>
-                <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Llegamos a todos los distritos y zonas de Piura, Castilla y alrededores.</p>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <span class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm">Piura Centro</span>
-                    <span class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm">Castilla</span>
-                    <span class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm">Miraflores</span>
-                    <span class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm">Tambogrande</span>
-                    <span class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm">La Unión</span>
-                    <span class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm">Aeropuerto GMG</span>
-                    <span class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm">Universidades</span>
-                    <span class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm">Centros Comerciales</span>
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 px-4 bg-brand-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+                    Nuestros <span class="text-[#FFD700]">Servicios</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Soluciones de transporte para cada necesidad.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="feature-card p-6 fade-in-up">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-city text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Taxi Urbano</h3>
+                    <p class="text-gray-400 text-sm">Traslados rápidos dentro de Piura y Castilla. Llega a tiempo a tu destino.</p>
+                </div>
+
+                <div class="feature-card p-6 fade-in-up delay-1">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-plane-departure text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Aeropuerto</h3>
+                    <p class="text-gray-400 text-sm">Traslados puntuales al aeropuerto. Monitoreamos tu vuelo para esperarte.</p>
+                </div>
+
+                <div class="feature-card p-6 fade-in-up delay-2">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-hotel text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Hoteles</h3>
+                    <p class="text-gray-400 text-sm">Servicio especial para hoteles. Recogida y llegada coordinada con recepción.</p>
+                </div>
+
+                <div class="feature-card p-6 fade-in-up">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-briefcase text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Servicio Ejecutivo</h3>
+                    <p class="text-gray-400 text-sm">Transporte corporativo con facturación. Ideal para empresas y negocios.</p>
+                </div>
+
+                <div class="feature-card p-6 fade-in-up delay-1">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-calendar-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Viajes Programados</h3>
+                    <p class="text-gray-400 text-sm">Reserva con anticipación. Te esperamos puntual en la hora acordada.</p>
+                </div>
+
+                <div class="feature-card p-6 fade-in-up delay-2">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-moon text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Servicio Nocturno</h3>
+                    <p class="text-gray-400 text-sm">Salidas nocturnas, eventos y fiestas. Llegamos hasta donde estés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="como-funciona" class="py-20 px-4 bg-brand-dark">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+                    ¿Cómo <span class="text-[#FFD700]">funciona</span>?
+                </h2>
+                <p class="text-gray-400">Reserva tu taxi en 3 pasos simples.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center fade-in-up">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-[#FFD700] to-[#E6C200] rounded-full flex items-center justify-center mb-6 shadow-lg shadow-[#FFD700]/20">
+                        <span class="text-3xl font-extrabold text-black">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Cotiza tu viaje</h3>
+                    <p class="text-gray-400">Ingresa origen y destino para obtener tu tarifa estimada al instante.</p>
+                </div>
+
+                <div class="text-center fade-in-up delay-1">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-[#FFD700] to-[#E6C200] rounded-full flex items-center justify-center mb-6 shadow-lg shadow-[#FFD700]/20">
+                        <span class="text-3xl font-extrabold text-black">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Revisa la tarifa</h3>
+                    <p class="text-gray-400">Confirma el precio estimado y elige el tipo de vehículo que prefieres.</p>
+                </div>
+
+                <div class="text-center fade-in-up delay-2">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-[#FFD700] to-[#E6C200] rounded-full flex items-center justify-center mb-6 shadow-lg shadow-[#FFD700]/20">
+                        <span class="text-3xl font-extrabold text-black">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Reserva por WhatsApp</h3>
+                    <p class="text-gray-400">Envía tu pedido con un clic. Te confirmamos al instante.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonios" class="py-24 bg-brand-dark relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-brand-green font-bold text-sm uppercase tracking-wider">Testimonios</span>
-                <h2 class="text-3xl md:text-5xl font-bold text-white mt-3 mb-4">Lo que dicen nuestros <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-400">clientes</span></h2>
+    <section class="py-20 px-4 bg-brand-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+                    Lo que dicen nuestros <span class="text-[#FFD700]">clientes</span>
+                </h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1 -->
-                <div class="bg-gray-900/60 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/30 transition-all duration-300">
-                    <div class="flex text-yellow-400 mb-4 text-sm">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="feature-card p-6 fade-in-up">
+                    <div class="flex text-[#FFD700] mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-300 mb-6 italic leading-relaxed">"Excelente servicio. El conductor llegó en 5 minutos y el auto estaba impecable. Muy recomendados para ir al aeropuerto."</p>
+                    <p class="text-gray-300 mb-4 italic">"Excelente atención y llegada rápida. El conductor muy profesional y el auto impecable."</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-green to-emerald-500 flex items-center justify-center font-bold text-white">JC</div>
+                        <div class="w-10 h-10 bg-gradient-to-br from-[#FFD700] to-[#E6C200] rounded-full flex items-center justify-center font-bold text-black">JC</div>
                         <div>
-                            <p class="text-white font-bold text-sm">Juan Carlos M.</p>
-                            <p class="text-gray-500 text-xs">Piura</p>
+                            <div class="text-white font-semibold text-sm">Juan Carlos M.</div>
+                            <div class="text-gray-500 text-xs">Piura</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Review 2 -->
-                <div class="bg-gray-900/60 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/30 transition-all duration-300">
-                    <div class="flex text-yellow-400 mb-4 text-sm">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <div class="feature-card p-6 fade-in-up delay-1">
+                    <div class="flex text-[#FFD700] mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-300 mb-6 italic leading-relaxed">"Me encanta que se pueda pedir por WhatsApp tan rápido. La atención es muy amable y segura. Los uso siempre."</p>
+                    <p class="text-gray-300 mb-4 italic">"Muy cómodo y seguro. Reservé por WhatsApp y me respondieron al instante. Súper recomendado."</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-green to-emerald-500 flex items-center justify-center font-bold text-white">AL</div>
+                        <div class="w-10 h-10 bg-gradient-to-br from-[#FFD700] to-[#E6C200] rounded-full flex items-center justify-center font-bold text-black">AL</div>
                         <div>
-                            <p class="text-white font-bold text-sm">Andrea L.</p>
-                            <p class="text-gray-500 text-xs">Castilla</p>
+                            <div class="text-white font-semibold text-sm">Andrea L.</div>
+                            <div class="text-gray-500 text-xs">Castilla</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Review 3 -->
-                <div class="bg-gray-900/60 p-8 rounded-2xl border border-gray-800 hover:border-brand-green/30 transition-all duration-300">
-                    <div class="flex text-yellow-400 mb-4 text-sm">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <div class="feature-card p-6 fade-in-up delay-2">
+                    <div class="flex text-[#FFD700] mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-300 mb-6 italic leading-relaxed">"Siempre los uso para mis viajes de trabajo. Puntuales y profesionales. El mejor taxi de Piura sin duda."</p>
+                    <p class="text-gray-300 mb-4 italic">"Siempre los uso para ir al aeropuerto. Puntuales y confiables. Los mejores de Piura."</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-green to-emerald-500 flex items-center justify-center font-bold text-white">RP</div>
+                        <div class="w-10 h-10 bg-gradient-to-br from-[#FFD700] to-[#E6C200] rounded-full flex items-center justify-center font-bold text-black">RP</div>
                         <div>
-                            <p class="text-white font-bold text-sm">Roberto P.</p>
-                            <p class="text-gray-500 text-xs">Empresario</p>
+                            <div class="text-white font-semibold text-sm">Roberto P.</div>
+                            <div class="text-gray-500 text-xs">Empresario</div>
                         </div>
                     </div>
                 </div>
@@ -637,76 +746,75 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-brand-green to-emerald-600"></div>
+    <section class="py-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#FFD700] to-[#E6C200]"></div>
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]"></div>
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">¿Listo para viajar <span class="text-white/90">seguro?</span></h2>
-            <p class="text-green-100 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">No esperes más. Solicita tu taxi Flores Vip ahora y viaja cómodo las 24 horas del día.</p>
-            <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" class="btn-glow inline-flex items-center gap-3 bg-white text-brand-green px-12 py-6 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition-all transform hover:scale-105">
-                <i class="fab fa-whatsapp text-2xl"></i> Solicitar Taxi Ahora
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-black mb-4">
+                ¿Necesitas un taxi ahora mismo?
+            </h2>
+            <p class="text-black/80 text-lg mb-8 max-w-2xl mx-auto">
+                Cotiza en segundos y reserva por WhatsApp con atención inmediata.
+            </p>
+            <a href="#cotizador" class="inline-flex items-center gap-3 bg-black text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl hover:bg-gray-900 transition-all transform hover:scale-105">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                Reservar ahora
             </a>
-            <p class="text-green-100 text-sm mt-6 opacity-80">Respuesta inmediata • Sin costo adicional</p>
+            <p class="text-black/60 text-sm mt-4">
+                <i class="fas fa-bolt mr-1"></i>Respuesta en menos de 1 minuto
+            </p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-16 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-                <!-- Brand -->
+    <footer class="bg-brand-black py-12 px-4 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="https://image.qwenlm.ai/public_source/8774006c-f779-49e1-a959-f70dbf2b08ff/135514433-4e1b-4da9-9948-4b318c4e7271.png" alt="Logo Footer" class="h-12 w-auto">
-                        <span class="font-bold text-xl text-white">FLORES<span class="text-brand-green">VIP</span></span>
+                        <img src="https://image.qwenlm.ai/public_source/8774006c-f779-49e1-a959-f70dbf2b08ff/135514433-4e1b-4da9-9948-4b318c4e7271.png" alt="Logo" class="h-10 w-auto">
+                        <span class="font-bold text-lg text-white">FLORES<span class="text-[#FFD700]">VIP</span></span>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Tu servicio de taxi premium en Piura. Rápido, seguro y confiable las 24 horas.</p>
+                    <p class="text-gray-500 text-sm">Tu servicio de taxi premium en Piura. Rápido, seguro y confiable las 24 horas.</p>
                 </div>
 
-                <!-- Contact -->
                 <div>
-                    <h4 class="text-white font-bold text-lg mb-4">Contacto</h4>
-                    <div class="space-y-3">
-                        <a href="tel:+51949339864" class="flex items-center gap-3 text-gray-400 hover:text-brand-green transition-colors">
-                            <i class="fas fa-phone text-brand-green"></i>
-                            <span>963 795 412</span>
+                    <h4 class="text-white font-bold mb-4">Contacto</h4>
+                    <div class="space-y-2">
+                        <a href="tel:+51949339864" class="flex items-center gap-2 text-gray-400 hover:text-[#FFD700] transition-colors">
+                            <i class="fas fa-phone text-[#FFD700]"></i>
+                            <span>949 339 864</span>
                         </a>
-                        <a href="tel:+51949339864" class="flex items-center gap-3 text-gray-400 hover:text-brand-green transition-colors">
-                            <i class="fas fa-phone text-brand-green"></i>
-                            <span>962 387 032</span>
-                        </a>
-                        <a href="https://wa.me/51949339864" class="flex items-center gap-3 text-gray-400 hover:text-brand-green transition-colors">
-                            <i class="fab fa-whatsapp text-brand-green"></i>
+                        <a href="https://wa.me/51949339864" class="flex items-center gap-2 text-gray-400 hover:text-[#FFD700] transition-colors">
+                            <i class="fab fa-whatsapp text-[#FFD700]"></i>
                             <span>WhatsApp Directo</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Service Area -->
                 <div>
-                    <h4 class="text-white font-bold text-lg mb-4">Zona de Servicio</h4>
+                    <h4 class="text-white font-bold mb-4">Zona de Servicio</h4>
                     <div class="space-y-2 text-gray-400 text-sm">
-                        <p><i class="fas fa-map-marker-alt text-brand-green mr-2"></i> Piura, Perú</p>
-                        <p><i class="fas fa-clock text-brand-green mr-2"></i> Servicio 24/7</p>
-                        <p><i class="fas fa-check-circle text-brand-green mr-2"></i> Cobertura total</p>
+                        <p><i class="fas fa-map-marker-alt text-[#FFD700] mr-2"></i>Piura, Perú</p>
+                        <p><i class="fas fa-clock text-[#FFD700] mr-2"></i>Servicio 24/7</p>
+                        <p><i class="fas fa-check-circle text-[#FFD700] mr-2"></i>Cobertura total</p>
                     </div>
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-600 text-xs text-center md:text-left">
+            <div class="section-divider mb-6"></div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-sm text-center md:text-left">
                     &copy; 2024 Taxi Flores Vip. Todos los derechos reservados.
                 </p>
                 <div class="flex items-center gap-4">
-                    <a href="https://wa.me/51949339864" class="text-gray-500 hover:text-brand-green transition-colors">
+                    <a href="https://wa.me/51949339864" class="text-gray-500 hover:text-[#FFD700] transition-colors">
                         <i class="fab fa-whatsapp text-xl"></i>
                     </a>
-                    <a href="tel:+51949339864" class="text-gray-500 hover:text-brand-green transition-colors">
+                    <a href="tel:+51949339864" class="text-gray-500 hover:text-[#FFD700] transition-colors">
                         <i class="fas fa-phone text-xl"></i>
-                    </a>
-                    <a href="mailto:contacto@taxifloresvip.com" class="text-gray-500 hover:text-brand-green transition-colors">
-                        <i class="fas fa-envelope text-xl"></i>
                     </a>
                 </div>
             </div>
@@ -714,12 +822,150 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/51949339864?text=Hola,%20quiero%20pedir%20un%20taxi" target="_blank" class="whatsapp-float bg-[#25D366] hover:bg-[#20bd5a] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg animate-pulse-slow">
-        <i class="fab fa-whatsapp text-4xl"></i>
+    <a href="https://wa.me/51949339864?text=Hola,%20necesito%20un%20taxi" target="_blank" class="whatsapp-float w-14 h-14 rounded-full flex items-center justify-center animate-float">
+        <i class="fab fa-whatsapp text-3xl text-white"></i>
     </a>
 
     <!-- Scripts -->
     <script>
+        // Calculator Logic
+        const form = document.getElementById('calculator-form');
+        const origenInput = document.getElementById('origen');
+        const destinoInput = document.getElementById('destino');
+        const priceDisplay = document.getElementById('estimated-price');
+        const vehicleOptions = document.querySelectorAll('.vehicle-option');
+        const scheduleOptions = document.querySelectorAll('.schedule-option');
+
+        // Pricing configuration
+        const PRICING = {
+            locations: {
+                'aeropuerto': 20,
+                'aeropuerto': 20,
+                'gmg': 20,
+                'terminal': 15,
+                'centro': 12,
+                'hotel': 18,
+                'plaza': 14,
+                'mall': 16,
+                'universidad': 14,
+                'clinica': 16
+            },
+            basePrice: 16,
+            vehicle: {
+                'auto': 0,
+                'sedan': 5,
+                'suv': 10
+            },
+            schedule: {
+                'now': 0,
+                'scheduled': 3
+            }
+        };
+
+        let selectedVehicle = 'auto';
+        let selectedSchedule = 'now';
+
+        // Calculate price based on inputs
+        function calculatePrice() {
+            const origen = origenInput.value.toLowerCase();
+            const destino = destinoInput.value.toLowerCase();
+
+            let basePrice = PRICING.basePrice;
+
+            // Check for location keywords
+            for (const [keyword, price] of Object.entries(PRICING.locations)) {
+                if (origen.includes(keyword) || destino.includes(keyword)) {
+                    basePrice = Math.max(basePrice, price);
+                }
+            }
+
+            // Add vehicle surcharge
+            basePrice += PRICING.vehicle[selectedVehicle];
+
+            // Add schedule surcharge
+            basePrice += PRICING.schedule[selectedSchedule];
+
+            return basePrice;
+        }
+
+        // Update price display
+        function updatePrice() {
+            const price = calculatePrice();
+            priceDisplay.textContent = price;
+        }
+
+        // Vehicle selection
+        vehicleOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                vehicleOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedVehicle = option.dataset.vehicle;
+                updatePrice();
+            });
+        });
+
+        // Schedule selection
+        scheduleOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                scheduleOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                selectedSchedule = option.dataset.schedule;
+                updatePrice();
+            });
+        });
+
+        // Real-time price update on input
+        origenInput.addEventListener('input', updatePrice);
+        destinoInput.addEventListener('input', updatePrice);
+
+        // Form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const origen = origenInput.value.trim();
+            const destino = destinoInput.value.trim();
+
+            if (!origen || !destino) {
+                // Show error feedback
+                if (!origen) origenInput.classList.add('border-red-500');
+                if (!destino) destinoInput.classList.add('border-red-500');
+                
+                setTimeout(() => {
+                    origenInput.classList.remove('border-red-500');
+                    destinoInput.classList.remove('border-red-500');
+                }, 2000);
+                return;
+            }
+
+            const vehicleNames = {
+                'auto': 'Auto',
+                'sedan': 'Sedán',
+                'suv': 'Camioneta'
+            };
+
+            const scheduleNames = {
+                'now': 'Ahora',
+                'scheduled': 'Programado'
+            };
+
+            const price = calculatePrice();
+
+            const message = `Hola, quisiera solicitar un taxi.
+
+📍 *Origen:* ${origen}
+📍 *Destino:* ${destino}
+🚘 *Vehículo:* ${vehicleNames[selectedVehicle]}
+🕒 *Horario:* ${scheduleNames[selectedSchedule]}
+💰 *Tarifa estimada:* S/${price}
+
+¿Me confirman disponibilidad, por favor?`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/51949339864?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        });
+
         // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
@@ -728,7 +974,6 @@
             menu.classList.toggle('hidden');
         });
 
-        // Close mobile menu when clicking a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
@@ -745,16 +990,13 @@
             }
         });
 
-        // Smooth scroll for anchor links
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
@@ -762,24 +1004,20 @@
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.animationPlayState = 'running';
                 }
             });
         }, observerOptions);
 
-        // Observe feature cards
-        document.querySelectorAll('.feature-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            el.style.animationFillMode = 'forwards';
+            observer.observe(el);
         });
     </script>
 </body>
